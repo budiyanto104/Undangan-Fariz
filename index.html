@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walimatul Khitan Fariz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#041126;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#183d7a 0%,#041126 55%);
+z-index:-2;
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+opacity:.15;
+z-index:-1;
+}
+
+#opening{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+
+background:
+linear-gradient(rgba(4,10,30,.82),rgba(4,10,30,.92)),
+url('fariz.jpg') center/cover no-repeat;
+
+transition:1s ease;
+}
+
+.hide{
+opacity:0;
+visibility:hidden;
+}
+
+.open-box{
+max-width:420px;
+width:100%;
+padding:40px 30px;
+border-radius:30px;
+text-align:center;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,215,120,.3);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.45),
+0 0 40px rgba(255,215,120,.12);
+}
+
+.open-box h4{
+letter-spacing:5px;
+font-weight:300;
+margin-bottom:15px;
+color:#ffd977;
+}
+
+.open-box h1{
+font-family:'Cinzel',serif;
+font-size:52px;
+line-height:1.1;
+color:#ffe39b;
+margin-bottom:15px;
+}
+
+.open-box p{
+line-height:1.8;
+color:#f0f0f0;
+}
+
+#guest{
+margin-top:15px;
+font-size:22px;
+font-weight:600;
+color:#56ccf2;
+}
+
+.open-btn{
+margin-top:28px;
+padding:16px 30px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+
+background:linear-gradient(135deg,#ffd977,#cda349);
+color:#041126;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+
+background:
+linear-gradient(rgba(4,10,30,.72),rgba(4,10,30,.86)),
+url('fariz.jpg') center/cover no-repeat;
+}
+
+.hero-content{
+max-width:700px;
+}
+
+.hero h4{
+letter-spacing:5px;
+margin-bottom:15px;
+color:#ffe39b;
+}
+
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:70px;
+line-height:1.1;
+color:#ffe39b;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.9;
+}
+
+.scroll-btn{
+display:inline-block;
+margin-top:30px;
+padding:16px 32px;
+border-radius:50px;
+background:linear-gradient(135deg,#ffd977,#cda349);
+color:#041126;
+font-weight:700;
+text-decoration:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:80px 20px;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,215,120,.22);
+border-radius:30px;
+padding:35px;
+margin-bottom:30px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.35);
+}
+
+.title{
+text-align:center;
+margin-bottom:25px;
+}
+
+.title h2{
+font-family:'Cinzel',serif;
+font-size:36px;
+color:#ffe39b;
+}
+
+.profile{
+width:240px;
+height:240px;
+border-radius:50%;
+overflow:hidden;
+margin:auto;
+border:5px solid #ffd977;
+box-shadow:0 0 40px rgba(255,215,120,.2);
+}
+
+.profile img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.center{
+text-align:center;
+line-height:2;
+}
+
+.countdown{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+margin-top:25px;
+}
+
+.box{
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,.06);
+text-align:center;
+border:1px solid rgba(255,215,120,.18);
+}
+
+.box h1{
+font-size:42px;
+color:#ffe39b;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:15px 28px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+
+background:linear-gradient(135deg,#ffd977,#cda349);
+color:#041126;
+}
+
+.rekening{
+padding:25px;
+border-radius:20px;
+margin-top:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,215,120,.15);
+text-align:center;
+}
+
+.rekening img{
+width:110px;
+margin-bottom:15px;
+}
+
+.copy{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:40px;
+font-weight:700;
+cursor:pointer;
+
+background:#56ccf2;
+color:#041126;
+}
+
+footer{
+text-align:center;
+padding:50px 20px;
+color:#ddd;
+}
+
+audio{
+display:none;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:48px;
+}
+
+.open-box h1{
+font-size:42px;
+}
+
+.title h2{
+font-size:28px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="opening">
+<div class="open-box">
+
+<h4>WALIMATUL KHITAN</h4>
+
+<h1>Fariz<br>Ar-Rasyid</h1>
+
+<p>
+Kepada Yth.<br>
+Bapak/Ibu/Saudara/i
+</p>
+
+<div id="guest">Tamu Undangan</div>
+
+<button class="open-btn" onclick="openInvite()">
+Buka Undangan
+</button>
+
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="sholawat.mp3" type="audio/mpeg">
+</audio>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h4>WALIMATUL KHITAN</h4>
+
+<h1>Fariz Ar-Rasyid</h1>
+
+<p>
+Putra dari<br>
+Bapak Budiyanto & Ibu Lilis Sanipah
+</p>
+
+<a href="#content" class="scroll-btn">
+Lihat Undangan
+</a>
+
+</div>
+
+</section>
+
+<div class="container" id="content">
+
+<div class="card">
+
+<div class="title">
+<h2>Putra Kami</h2>
+</div>
+
+<div class="profile">
+<img src="fariz.jpg">
+</div>
+
+<div class="center" style="margin-top:20px;">
+<h2>Fariz Ar-Rasyid</h2>
+<p>Putra dari Bapak Budiyanto & Ibu Lilis Sanipah</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>Kata Sambutan</h2>
+</div>
+
+<div class="center">
+Dengan memohon rahmat dan ridho Allah SWT,
+kami bermaksud menyelenggarakan acara Walimatul Khitan putra kami tercinta.
+<br><br>
+Merupakan suatu kehormatan bagi kami apabila
+Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu.
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>Countdown Acara</h2>
+</div>
+
+<div class="countdown">
+
+<div class="box">
+<h1 id="days">0</h1>
+<p>Hari</p>
+</div>
+
+<div class="box">
+<h1 id="hours">0</h1>
+<p>Jam</p>
+</div>
+
+<div class="box">
+<h1 id="minutes">0</h1>
+<p>Menit</p>
+</div>
+
+<div class="box">
+<h1 id="seconds">0</h1>
+<p>Detik</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>Detail Acara</h2>
+</div>
+
+<div class="center">
+
+<p><b>Sabtu, 20 Juni 2026</b></p>
+
+<p>13:00 WIB - selesai</p>
+
+<br>
+
+<p>
+Gg. H. Jukih No.108, RT.002/RW.010,<br>
+Paninggilan Utara, Kec. Ciledug,<br>
+Kota Tangerang, Banten
+</p>
+
+<a class="btn"
+target="_blank"
+href="https://maps.app.goo.gl/sDoqKV3o5AQEeNYE9">
+Buka Google Maps
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>Hadits Tentang Khitan</h2>
+</div>
+
+<div class="center">
+“Fitrah itu ada lima: khitan, mencukur bulu kemaluan,
+memotong kuku, mencabut bulu ketiak,
+dan merapikan kumis.”
+<br><br>
+(HR. Bukhari dan Muslim)
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>RSVP WhatsApp</h2>
+</div>
+
+<div class="center">
+
+<p>Kirim konfirmasi kehadiran</p>
+
+<a class="btn"
+target="_blank"
+href="https://wa.me/6282260402070">
+RSVP Sekarang
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>Amplop Digital</h2>
+</div>
+
+<div class="rekening">
+
+<img src="bca.png">
+
+<h3>BCA — 7140229266</h3>
+
+<p>a.n Budiyanto</p>
+
+<button class="copy"
+onclick="copyRek('7140229266')">
+Copy Rekening
+</button>
+
+</div>
+
+<div class="rekening">
+
+<img src="bca.png">
+
+<h3>BCA — 7330323226</h3>
+
+<p>a.n Lilis Sanipah</p>
+
+<button class="copy"
+onclick="copyRek('7330323226')">
+Copy Rekening
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>
+Terima kasih atas doa dan kehadirannya
+<br><br>
+Budiyanto & Lilis Sanipah
+</p>
+
+</footer>
+
+<script>
+
+const music = document.getElementById('music');
+
+function openInvite(){
+
+document
+.getElementById('opening')
+.classList.add('hide');
+
+music.play().catch((e)=>{
+console.log(e);
+});
+
+confetti({
+particleCount:200,
+spread:120,
+origin:{y:0.6}
+});
+
+}
+
+function copyRek(rek){
+
+navigator.clipboard.writeText(rek);
+
+alert('Nomor rekening berhasil disalin');
+
+}
+
+const targetDate = new Date("June 20, 2026 13:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+
+const distance = targetDate - now;
+
+document.getElementById('days').innerHTML =
+Math.floor(distance / (1000*60*60*24));
+
+document.getElementById('hours').innerHTML =
+Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+document.getElementById('minutes').innerHTML =
+Math.floor((distance % (1000*60*60)) / (1000*60));
+
+document.getElementById('seconds').innerHTML =
+Math.floor((distance % (1000*60)) / 1000);
+
+},1000);
+
+const params = new URLSearchParams(window.location.search);
+
+const guest = params.get('to');
+
+if(guest){
+
+document.getElementById('guest').innerHTML =
+decodeURIComponent(guest.replace(/\+/g,' '));
+
+}
+
+</script>
+
+</body>
+</html>
