@@ -2,38 +2,261 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Fariz</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Walimatul Khitan Fariz</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* PEMBERSIH UTAMA (Mencegah bentrok dengan sisa code lama) */
+        /* --- RESET CSS STANDAR (TANPA FORCE !IMPORTANT BERLEBIHAN) --- */
         * {
-            margin: 0 !important;
-            padding: 0 !important;
-            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        body { 
-            font-family: 'Poppins', sans-serif !important; 
-            overflow-x: hidden !important; 
-            background: #f4f6f4 !important;
-            color: #2c3e50 !important;
+        html, body { 
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden; /* Mengunci agar layar tidak bisa digeser ke kanan-kiri */
+            font-family: 'Poppins', sans-serif; 
+            background: #f4f6f4;
+            color: #2c3e50;
+            -webkit-text-size-adjust: 100%;
         }
         
-        /* COVER PAGE ISLAMI */
-        .cover-global {
-            position: fixed !important; 
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important; 
-            height: 100vh !important;
-            background-color: #2d4a43 !important; /* Hijau Sage Tua */
+        /* --- COVER PAGE UTAMA --- */
+        .cover-khitan {
+            position: fixed; 
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background-color: #2d4a43; /* Tema Hijau Islami */
+            color: #ffffff;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            z-index: 99999; 
+            transition: opacity 0.5s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+        .img-avatar-khitan {
+            max-width: 140px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .cover-khitan h2 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: #dfc15d;
+            margin-bottom: 5px;
+        }
+        .cover-khitan h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 35px;
+        }
+
+        /* --- TOMBOL BUKA 1X KLIK --- */
+        .btn-buka-undangan {
+            background: #dfc15d;
+            color: #1e332d;
+            border: none;
+            padding: 14px 45px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.1s;
+        }
+        .btn-buka-undangan:active {
+            transform: scale(0.98);
+        }
+
+        /* --- CONTROLLER MUSIK FLOATING --- */
+        .music-box-floating {
+            position: fixed; 
+            bottom: 25px; right: 25px;
+            z-index: 9999; 
+            display: none;
+        }
+        .music-btn-circle {
+            width: 50px; height: 50px; 
+            border-radius: 50%;
+            background: #dfc15d; 
+            border: 2px solid #ffffff; 
+            color: #1e332d;
+            cursor: pointer; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+        @keyframes putarMusik { 100% { transform: rotate(360deg); } }
+        .musik-berputar { animation: putarMusik 4s linear infinite; }
+
+        /* --- BOX ISI KONTEN (RESPONSIF PAS DI LAYAR HP) --- */
+        .box-isi-konten {
+            width: 90%; /* Menggunakan persentase agar dinamis mengikuti lebar HP */
+            max-width: 500px; /* Batas lebar maksimal di layar lebar/komputer */
+            margin: 40px auto;
+            padding: 35px 20px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+        }
+        .text-arab-islami {
+            font-family: 'Amiri', serif;
+            font-size: 26px;
+            color: #2d4a43;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- SISTEM COUNTDOWN HORIZONTAL AMAN (STRUKTUR TABEL DINAMIS) --- */
+        .tabel-countdown {
+            display: table;
+            width: 100%;
+            max-width: 100%;
+            margin: 30px auto;
+            border-collapse: separate;
+            border-spacing: 6px 0px; /* Jarak aman antar kotak di HP */
+        }
+        .kolom-countdown {
+            display: table-cell;
+            width: 25%;
+            background: #f7faf8;
+            border: 1px solid #d1ded7;
+            border-radius: 8px;
+            padding: 10px 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .angka-waktu {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d4a43;
+            display: block;
+        }
+        .label-waktu {
+            font-size: 10px;
+            color: #7f8c8d;
+            display: block;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="mysong" loop preload="auto">
+        <source src="musik-undangan.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-container" class="music-box-floating">
+        <button class="music-btn-circle" onclick="toggleMusic()">
+            <span id="music-icon" class="musik-berputar">🎵</span>
+        </button>
+    </div>
+
+    <div id="cover-page" class="cover-khitan">
+        <img src="fariz-removebg-preview.png" alt="Fariz" class="img-avatar-khitan">
+        <h2>Walimatul Khitan</h2>
+        <h1>Fariz</h1>
+        <button class="btn-buka-undangan" onclick="bukaUndangan()">Buka Undangan</button>
+    </div>
+
+    <div class="box-isi-konten">
+        <span class="text-arab-islami">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
+        
+        <p style="font-size: 13px; color: #555; font-style: italic; line-height: 1.6; margin-bottom: 25px;">
+            "Ya Allah, jalankanlah khitanan ini dengan aman dan jadikanlah anak kami anak yang saleh, berbakti kepada kedua orang tua, agama, dan bangsa."
+        </p>
+
+        <hr style="width: 50px; margin: 20px auto; border: 0; border-top: 1px solid #dfc15d;">
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 26px; color: #2d4a43; margin-bottom: 5px;">Fariz</h3>
+        <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Putra Kami Tercinta</p>
+
+        <div class="tabel-countdown">
+            <div class="kolom-countdown">
+                <span class="angka-waktu" id="days">00</span>
+                <span class="label-waktu">Hari</span>
+            </div>
+            <div class="kolom-countdown">
+                <span class="angka-waktu" id="hours">00</span>
+                <span class="label-waktu">Jam</span>
+            </div>
+            <div class="kolom-countdown">
+                <span class="angka-waktu" id="minutes">00</span>
+                <span class="label-waktu">Menit</span>
+            </div>
+            <div class="kolom-countdown">
+                <span class="angka-waktu" id="seconds">00</span>
+                <span class="label-waktu">Detik</span>
+            </div>
+        </div>
+
+        <p style="color: #666; font-size: 13px; line-height: 1.6;">
+            Insya Allah acara walimatul khitan akan dilaksanakan pada waktu yang tertera di atas. Terima kasih atas doa restu Bapak/Ibu/Saudara/i sekalian.
+        </p>
+    </div>
+
+    <script>
+        const audio = document.getElementById('mysong');
+        const cover = document.getElementById('cover-page');
+        const musicContainer = document.getElementById('music-container');
+        const musicIcon = document.getElementById('music-icon');
+
+        // Buka Undangan & Jalankan Musik Langsung
+        function bukaUndangan() {
+            audio.play().catch(function(e) { console.log("Otoritas audio diblokir browser:", e); });
+            
+            cover.style.opacity = '0';
+            musicContainer.style.display = 'block';
+            setTimeout(function() { cover.style.display = 'none'; }, 500);
+        }
+
+        // Kontrol Manual Tombol Musik
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.innerText = "🎵";
+                musicIcon.classList.add('musik-berputar');
+            } else {
+                audio.pause();
+                musicIcon.innerText = "⏸️";
+                musicIcon.classList.remove('musik-berputar');
+            }
+        }
+
+        // HITUNG MUNDUR (Target: 20 juni 2026)
+        const targetKhitan = new Date("2026-06-26 13:00:00").getTime();
+        
+        setInterval(function() {
+            const selisih = targetKhitan - new Date().getTime();
+            if (selisih < 0) return;
+
+            const d = Math.floor(selisih / (1000 * 60 * 60 * 24));
+            const h = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((selisih % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+    </script>
+</body>
+</html>
             color: #ffffff !important;
             display: flex !important; 
             flex-direction: column !important;
